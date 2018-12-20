@@ -13,6 +13,7 @@ int total;
 
 void Read();
 void Answer();
+void Seitouritu();
 
 int main()
 {
@@ -69,76 +70,4 @@ void Read(){
 	fclose(fi);
 }
 	
-void Answer(){
-	int i,j;
-	int a;
-	int count,maru;
-	float par;
-	char ans[100];
-	
-	struct Bad{
-		char q[100];
-		char bans[100];
-		char ans[100];
-	}bad[100];
-	
-	a = 0;
-	count = 0;
-	maru = 0;
-	
-	Read();
-	
-	do{
-		printf("問題数：%d問\n\n");
-		printf("始める -> 1\n");
-		printf("設定 -> 0\n");
-		scanf("%d",&x");
-		switch(x){
-			case 1:
-				for(i=0;i<total;i++){
-					count++;
-					printf("問題：%s\n",Q[i].q);
-					printf("答え：");
-					scanf("%s",ans);
-					a = strcmp(ans,Q[i].ans);
-					if(a == 0){
-						printf("○\n");
-						maru++;
-					}else{
-						printf("×\n");
-						strcpy(bad[j].q,Q[i].q);
-						strcpy(bad[j].bans,ans);
-						strcpy(bad[j].ans,Q[i].ans);
-						printf("正解：%s\n",Q[i].ans);
-						j++;
-					}
-				}
-				printf("回答終了\n\n");
-				par = (float)maru / (float)count * 100;
-				printf("正解率：%.1f par\n",par);
-				if(count != maru){
-					printf("%d問不正解です\n\n",count-maru);
-					printf("間違った問題\n\n");
-					for(i=0;i<count-maru;i++){
-						printf("問題：%s\n",bad[i].q);
-						printf("回答：%s\n",bad[i].bans);
-						printf("正解：%s\n\n",bad[i].ans);
-					}
-				}else printf("全問正解です\n\n");
-				break;
-			case 0:
-				Config();
-				break;
-		}
-	}while(x != 1);
-}
 
-void ConfigRead(){
-	int rondom,bad;
-	FILE *fi,*fw;
-	
-	fi = fopen("config.txt","r");
-	fscanf("%d",&rondom);
-	fscanf("%d",&bad);
-	fclose(fi);
-}
