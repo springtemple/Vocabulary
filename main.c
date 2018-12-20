@@ -13,6 +13,7 @@ int total;
 
 void Read();
 void Answer();
+void Seitouritu();
 
 int main()
 {
@@ -114,18 +115,8 @@ void Answer(){
 					}
 				}
 				printf("回答終了\n\n");
-				par = (float)maru / (float)count * 100;
-				printf("正解率：%.1f par\n",par);
-				if(count != maru){
-					printf("%d問不正解です\n\n",count-maru);
-					printf("間違った問題\n\n");
-					for(i=0;i<count-maru;i++){
-						printf("問題：%s\n",bad[i].q);
-						printf("回答：%s\n",bad[i].bans);
-						printf("正解：%s\n\n",bad[i].ans);
-					}
-				}else printf("全問正解です\n\n");
-				break;
+				Seitouritsu();
+				
 			case 0:
 				Config();
 				break;
@@ -133,12 +124,54 @@ void Answer(){
 	}while(x != 1);
 }
 
+void Seitouritu()
+
 void ConfigRead(){
-	int rondom,bad;
-	FILE *fi,*fw;
+	*fw;
 	
 	fi = fopen("config.txt","r");
 	fscanf("%d",&rondom);
 	fscanf("%d",&bad);
 	fclose(fi);
 }
+
+void Config(){
+	int rondom,bad,a;
+	FILE *fi,
+	printf("---設定---\n");
+	printf("現在の設定\n");
+	printf("出題順：");
+	switch(rondom){
+		case 0:
+			printf("順番に出題する\n");
+			break;
+		case 1:
+			printf("ランダムに出題する\n");
+			break;
+	}
+	printf("間違った問題を");
+	switch(bad){
+		case 0:
+			printf("最後にすべて出力する\n");
+			break;
+		case 1:
+			printf("解けるまで解き直す\n");
+			break;
+	}
+	printf("\n");
+	printf("出題順の変更 -> 1\n");
+	printf("間違った問題の設定 -> 2\n");
+	scanf("%d",&a);
+	case(a){
+		case 1:
+			printf("順番に出題する -> 1\n");
+			printf("ランダムに出題する -> 2\n");
+			break;
+		case 2:
+			printf("間違った問題を最後にすべて出力する -> 0\n");
+			printf("解けるまで解き直す-> 1\n");
+			break;
+	}
+}
+	
+
