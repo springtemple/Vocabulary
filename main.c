@@ -10,7 +10,7 @@ void Uproad(){
 	char name;
 
 	printf("登録済みのファイル\n");
-	fil = fopen("file","r");
+	fil = fopen("file","a+");
 	while((name = fgetc(fil))!=EOF){
 		printf("%c",name);
 	}
@@ -41,7 +41,5 @@ void Uproad(){
 	
 
     fclose(fi);//ファイルを閉じる
-
-	    return 0;
 
 }
