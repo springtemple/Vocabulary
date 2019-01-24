@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-int main(){
+void Uproad(){
 	FILE *fi;
 	FILE *fil;
 	int i = 0;
